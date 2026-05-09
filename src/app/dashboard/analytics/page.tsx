@@ -46,7 +46,7 @@ export default function AnalyticsPage() {
             <BarChart data={grossData}>
               <XAxis dataKey="month" stroke="var(--text-muted)" tick={{ fontSize: 11 }} />
               <YAxis stroke="var(--text-muted)" tick={{ fontSize: 11 }} tickFormatter={v => `${v}M`} />
-              <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [`BWP ${v.toFixed(1)}M`, 'Gross']} />
+              <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: any) => [`BWP ${Number(v).toFixed(1)}M`, 'Gross']} />
               <Bar dataKey="grossM" fill="#1a56db" radius={[4,4,0,0]} />
             </BarChart>
           </ResponsiveContainer>
@@ -68,7 +68,7 @@ export default function AnalyticsPage() {
               </defs>
               <XAxis dataKey="month" stroke="var(--text-muted)" tick={{ fontSize: 11 }} />
               <YAxis stroke="var(--text-muted)" tick={{ fontSize: 11 }} tickFormatter={v => `${(v/1000000).toFixed(1)}M`} />
-              <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [formatPula(v), 'Levy']} />
+              <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: any) => [formatPula(Number(v)), 'Levy']} />
               <Area type="monotone" dataKey="levy" stroke="#f59e0b" fill="url(#levyG)" strokeWidth={2} />
             </AreaChart>
           </ResponsiveContainer>
