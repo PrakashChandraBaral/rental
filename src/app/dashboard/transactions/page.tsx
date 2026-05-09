@@ -45,7 +45,7 @@ export default function TransactionsPage() {
       <div className="card" style={{ marginBottom: 24 }}>
         <div style={{ marginBottom: 10, fontSize: 13, fontWeight: 600 }}>Revenue Split Breakdown</div>
         <div style={{ display: 'flex', height: 12, borderRadius: 6, overflow: 'hidden', gap: 1 }}>
-          <div style={{ flex: 1,   background: '#fbbf24', title: 'Govt 1%' }} title="Govt 1.0%" />
+          <div style={{ flex: 1,   background: '#fbbf24' }} title="Govt 1.0%" />
           <div style={{ flex: 1.5, background: '#a78bfa' }} title="Collins Coy 1.5%" />
           <div style={{ flex: 0.6, background: '#06b6d4' }} title="Tech 0.6%" />
           <div style={{ flex: 96.9,background: '#10b981' }} title="Landlord 96.9%" />
