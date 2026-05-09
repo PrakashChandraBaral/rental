@@ -65,7 +65,7 @@ export default function DashboardPage() {
               <XAxis dataKey="month" stroke="var(--text-muted)" tick={{ fontSize: 11 }} />
               <YAxis stroke="var(--text-muted)" tick={{ fontSize: 11 }} tickFormatter={v => `${(v/1000000).toFixed(1)}M`} />
               <Tooltip contentStyle={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: 8, color: 'var(--text-primary)' }}
-                formatter={(v: number) => [formatPula(v), 'Levy']} />
+                formatter={(v: any) => [formatPula(Number(v)), 'Levy']} />
               <Area type="monotone" dataKey="levy" stroke="#1a56db" fill="url(#levyGrad)" strokeWidth={2} />
             </AreaChart>
           </ResponsiveContainer>
