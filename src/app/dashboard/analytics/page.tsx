@@ -23,9 +23,9 @@ export default function AnalyticsPage() {
       <div className="grid-4" style={{ marginBottom: 28 }}>
         {[
           { label: 'Gross Rent (May)', value: formatPula(284132000), sub: '+5.2% MoM', color: '#60a5fa' },
-          { label: 'Govt Levy (May)',  value: formatPula(2841320),   sub: '1.0% captured at source', color: '#fbbf24' },
-          { label: 'Annual Run Rate',  value: 'BWP 34.1B',           sub: 'Projected FY2026', color: '#a78bfa' },
-          { label: 'Avg Compliance',   value: '95.2%',               sub: 'All zones', color: '#34d399' },
+          { label: 'Govt Levy (May)', value: formatPula(2841320), sub: '1.0% captured at source', color: '#fbbf24' },
+          { label: 'Annual Run Rate', value: 'BWP 34.1B', sub: 'Projected FY2026', color: '#a78bfa' },
+          { label: 'Avg Compliance', value: '95.2%', sub: 'All zones', color: '#34d399' },
         ].map(s => (
           <div key={s.label} className="stat-card">
             <div className="stat-value" style={{ fontSize: 20, color: s.color }}>{s.value}</div>
@@ -46,8 +46,8 @@ export default function AnalyticsPage() {
             <BarChart data={grossData}>
               <XAxis dataKey="month" stroke="var(--text-muted)" tick={{ fontSize: 11 }} />
               <YAxis stroke="var(--text-muted)" tick={{ fontSize: 11 }} tickFormatter={v => `${v}M`} />
-              <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: any) => [`BWP ${Number(v).toFixed(1)}M`, 'Gross']} />
-              <Bar dataKey="grossM" fill="#1a56db" radius={[4,4,0,0]} />
+              <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: any) => [`BWP ${Number(v || 0).toFixed(2)}`, "Gross Revenue"]} />
+              <Bar dataKey="grossM" fill="#1a56db" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -62,13 +62,13 @@ export default function AnalyticsPage() {
             <AreaChart data={monthly_revenue}>
               <defs>
                 <linearGradient id="levyG" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%"  stopColor="#f59e0b" stopOpacity={0.3} />
+                  <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.3} />
                   <stop offset="95%" stopColor="#f59e0b" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <XAxis dataKey="month" stroke="var(--text-muted)" tick={{ fontSize: 11 }} />
-              <YAxis stroke="var(--text-muted)" tick={{ fontSize: 11 }} tickFormatter={v => `${(v/1000000).toFixed(1)}M`} />
-              <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: any) => [formatPula(Number(v)), 'Levy']} />
+              <YAxis stroke="var(--text-muted)" tick={{ fontSize: 11 }} tickFormatter={v => `${(v / 1000000).toFixed(1)}M`} />
+              <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: any) => [formatPula(v), 'Levy']} />
               <Area type="monotone" dataKey="levy" stroke="#f59e0b" fill="url(#levyG)" strokeWidth={2} />
             </AreaChart>
           </ResponsiveContainer>
@@ -83,7 +83,7 @@ export default function AnalyticsPage() {
         </div>
         <div className="grid-4">
           {zone_performance.map((z, i) => {
-            const colors = ['#1a56db','#10b981','#8b5cf6','#f59e0b'];
+            const colors = ['#1a56db', '#10b981', '#8b5cf6', '#f59e0b'];
             return (
               <div key={z.zone} style={{
                 background: 'var(--bg-surface)', borderRadius: 'var(--radius-md)',
