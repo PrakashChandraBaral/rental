@@ -114,8 +114,8 @@ export default function AuditsPage() {
                       {a.dwell_mins}min {a.dwell_mins < 15 && '(< min)'}
                     </td>
                     <td style={{ fontSize: 12 }}>{a.vaps_verified.join(', ') || '—'}</td>
-                    <td style={{ fontWeight: 700, color: a.audit_score >= 7 ? '#34d399' : '#fbbf24' }}>
-                      {a.audit_score}/10
+                    <td style={{ fontWeight: 700, color: a.score >= 7 ? '#34d399' : '#fbbf24' }}>
+                      {a.score}/10
                     </td>
                     <td><span className={`badge ${getStatusBadge(a.status)}`}>{a.status}</span></td>
                   </tr>
